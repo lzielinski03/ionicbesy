@@ -1,0 +1,11 @@
+<ion-header>
+	<ion-navbar>
+		<ion-title>Lista de Solicitudes</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content padding class="legajos">
+	<ion-list>
+		<button ion-item (click)="legajoTapped(leg)" *ngFor="let leg of legajos">{{leg.description}} {{leg.id}}</button>
+	</ion-list>
+</ion-content>

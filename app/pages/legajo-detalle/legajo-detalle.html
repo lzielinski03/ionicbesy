@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Detalle de Solicitud</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="legajo-detalle">
+	<!--legajo-detalle></legajo-detalle-->
+  	<div *ngIf="legajo">
+  		{{legajo.description}} {{legajo.id}}
+  		<ion-list>
+  			<ion-item *ngFor="let bank of legajo.banks">
+  				{{bank.name}}  ${{bank.money}}
+  			</ion-item>
+  		</ion-list>
+  	</div>
+</ion-content>

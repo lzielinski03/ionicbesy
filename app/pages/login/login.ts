@@ -11,6 +11,8 @@ import 'rxjs/add/operator/map';
 
 import {TabsPage} from './../tabs/tabs';
 
+import {LegajoList} from './../legajos/legajo-list'
+
 @Component({
 	templateUrl: 'build/pages/login/login.html',
 	directives: [FORM_DIRECTIVES],
@@ -139,4 +141,8 @@ export class LoginPage {
     goLegajos() {
         this.nav.push(TabsPage);
     }*/
+
+    goLegajos() {
+      this.nav.push(LegajoList);
+    }
 }
