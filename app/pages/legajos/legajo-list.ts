@@ -7,10 +7,13 @@ import {Http, Headers, HTTP_BINDINGS} from '@angular/http';
 
 //import 'rxjs/add/operator/map';
 
+import {HeaderComponent} from './../components/header/header';
+
 import {LegajoDetallePage} from './../legajo-detalle/legajo-detalle';
 
 @Component({
 	templateUrl: 'build/pages/legajos/legajo-list.html',
+  directives: [HeaderComponent]
 })
 
 export class LegajoList {

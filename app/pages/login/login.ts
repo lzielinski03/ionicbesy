@@ -2,15 +2,11 @@ import {Component} from '@angular/core';
 import {NavController, Alert} from 'ionic-angular';
 import {FORM_DIRECTIVES, FormBuilder,  ControlGroup, Validators, AbstractControl} from '@angular/common';
 import {LoginValidator} from './validators/loginValidator';
-
 import {Http, HTTP_BINDINGS} from '@angular/http';
 import {AuthService} from './../../services/auth/auth';
-
 import 'rxjs/add/operator/map';
 
 import {TabsPage} from './../tabs/tabs';
-
-import {LegajoList} from './../legajos/legajo-list'
 
 @Component({
 	templateUrl: 'build/pages/login/login.html',
@@ -34,7 +30,6 @@ export class LoginPage {
     }
 
     login(event:Event): void {
-        
         event.preventDefault();
         if(this.authForm.valid) {
             
@@ -44,9 +39,5 @@ export class LoginPage {
                     (alert:any) => this.nav.present(alert)
                 );
         }
-    }
-
-    goLegajos() {
-      this.nav.push(LegajoList);
     }
 }
