@@ -5,7 +5,7 @@ import {StorageUtils} from '../../utils/storage.utils';
 import {Alert} from 'ionic-angular';
 import {User} from '../../classes/user';
 
-//import {tokenNotExpired} from 'angular2-jwt';
+import {ExtendedHttpService} from './../../services/http/ExtendedHttpService';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 
@@ -16,10 +16,11 @@ const BACKEND_URL:string = 'http://192.168.1.176:8090/auth/login';
 @Injectable()
 export class AuthService {
 
-	isLogin:boolean;
+	private currentUser: User;
 
-	constructor(private http:Http) {
-		this.isLogin = false;
+	private isLogin:boolean = false;
+
+	constructor(private http:Http, private http2: ExtendedHttpService) {
 	}
 
 	login(username:string, password:string):Observable<any> {
@@ -34,6 +35,7 @@ export class AuthService {
 			StorageUtils.setAccount(user);
 			StorageUtils.setToken(loginData.token);
 			this.isLogin = true;
+		
 
 			return user;
 			
@@ -47,6 +49,11 @@ export class AuthService {
 			return Observable.throw(alert);
 		});
 	}
+
+	login2(username:string, password:string):Observable<any> {
+        return this.http2.post({username:'username', password:'password'})
+        	.;
+    }
 
 	logout() {
 		StorageUtils.removeAccount();
@@ -63,5 +70,13 @@ export class AuthService {
         user.email = tokenPayload.sub;
 
         return user;
+	}
+
+	isLoggedIn():boolean {
+		return this.isLogin;
+	}
+
+	public setLogged() {
+		this.isLogin = true;
 	}
 }

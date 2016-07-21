@@ -1,5 +1,7 @@
 import {Component, Input} from '@angular/core';
-import {IONIC_DIRECTIVES} from 'ionic-angular';
+import {IONIC_DIRECTIVES, ViewController, Popover, NavController} from 'ionic-angular';
+
+import {PopoverPage} from './../menu-popover/menu-popover';
 
 @Component({
 	selector: 'header-component',
@@ -9,7 +11,16 @@ import {IONIC_DIRECTIVES} from 'ionic-angular';
 export class HeaderComponent {
 
 	@Input() title:string;
-	constructor() {
+	constructor(private nav: NavController) {
+	}
 
+	presentPopover(myEvent) {
+		let popover = Popover.create(PopoverPage);
+		this.nav.present(popover, {
+			ev: myEvent
+		});
 	}
 }
+
+
+
